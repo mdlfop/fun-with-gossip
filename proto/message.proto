@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package rpc;
+
+message PingRequest {}
+message PingResponse {
+    bool Suceess = 1;
+}
+
+message IndirectPingRequest {
+    string Target = 1;
+}
+message IndirectPingResponse {
+    bool Success = 1;
+}
+
+service Swim {
+    rpc Ping(PingRequest) returns (PingResponse) {}
+    rpc PingIndirect(IndirectPingRequest) returns (IndirectPingResponse) {}
+}
